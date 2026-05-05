@@ -30,7 +30,7 @@ function App() {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/search?q=${encodeURIComponent(query)}`
+        `${import.meta.env.VITE_API_URL}/api/search?q=${encodeURIComponent(query)}`
       );
       setResults(res.data.results || []);
     } catch (err) {
