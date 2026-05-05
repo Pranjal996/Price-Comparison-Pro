@@ -15,7 +15,7 @@ CORS(app) # Enable CORS for React frontend
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'app_data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'super-secret-key' # In production, use env variable
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY','fallback-secret')# In production, use env variable
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
